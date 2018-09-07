@@ -37,8 +37,11 @@ class AFirstPersonCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UMotionControllerComponent* L_MotionController;
 
+
+
 public:
 	AFirstPersonCharacter();
+
 
 protected:
 	virtual void BeginPlay();
@@ -60,9 +63,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	uint32 bUsingMotionControllers : 1;
 
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	TSubclassOf<class AGun> GunBlueprint;
+
 protected:
 	
-	
+	AGun * Gun;
 
 	/** Resets HMD orientation and position in VR. */
 	void OnResetVR();
